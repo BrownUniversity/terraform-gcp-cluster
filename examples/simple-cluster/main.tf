@@ -11,12 +11,10 @@ locals {
 #   MAIN BLOCK
 # ------------------------------------------------------------
 # Create the GCP Project
-module "renku_project" {
-  source                     = "./modules/project"
+module "project" {
+  source                     = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=clean-up"
 
-  credentials_path           = var.credentials_path
   project_name               = var.project_name
-  random_project_id          = var.random_project_id
   org_id                     = var.org_id
   billing_account            = var.billing_account
   auto_create_network        = var.auto_create_network
@@ -28,11 +26,11 @@ module "renku_project" {
 }
 
 # Create VPC 
-module "renku_vpc" {
+module "vpc" {
   source                     = "./modules/vpc"
   credentials_path           = var.credentials_path
 
-  project_id                 = module.renku_project.project_id
+  project_id                 = module.project.project_id
   network_name               = var.network_name
   routing_mode               = var.routing_mode
   subnet_name                = var.subnet_name
@@ -48,7 +46,7 @@ module "renku_vpc" {
   
 }
 
-module "sample-cluster" {
+module "simple-cluster" {
   source = "../../"
 
   regional                        = true
@@ -59,9 +57,9 @@ module "sample-cluster" {
   horizontal_pod_autoscaling      = true
 
   credentials_path = var.credentials_path
-  project_id = module.renku_project.project_id
+  project_id = module.project.project_id
   cluster_name = var.cluster_name
-  service_account_email = module.renku_project.service_account_email
+  service_account_email = module.project.service_account_email
 
   core_pool_machine_type          = "n1-highmem-4"
   core_pool_min_count             = 1
