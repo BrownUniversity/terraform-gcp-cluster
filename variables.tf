@@ -16,6 +16,7 @@ variable "gke_version" {
 
 variable "cluster_name" {
   description = "Name of cluster"
+  default = "default"
 }
 
 variable "regional" {
