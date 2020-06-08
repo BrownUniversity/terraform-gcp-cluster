@@ -1,6 +1,3 @@
-variable credentials_path {
-  description = "Location of the credential file."
-}
 
 # ---------------------------------------------------------------
 #  GKE VARIABLES
@@ -11,12 +8,12 @@ variable "project_id" {
 }
 
 variable "gke_version" {
-  default  = "~> 6.0"
+  default = "~> 6.0"
 }
 
 variable "cluster_name" {
   description = "Name of cluster"
-  default = "default"
+  default     = "default"
 }
 
 variable "regional" {
@@ -28,18 +25,18 @@ variable "region" {
 }
 
 variable "node_zones" {
-   description = "The zones to host the cluster in (optional if regional cluster / required if zonal)"
-   default     = ["us-east1-b"]
- }
+  description = "The zones to host the cluster in (optional if regional cluster / required if zonal)"
+  default     = ["us-east1-b"]
+}
 
 variable network_name {
   description = "The VPC network to host the cluster in."
-  default = "kubernetes-vpc"
+  default     = "kubernetes-vpc"
 }
 
 variable "subnetwork" {
   description = "The subnetwork to host the cluster in"
-  default = "kubernetes-subnet"
+  default     = "kubernetes-subnet"
 }
 
 variable range_name_pods {
@@ -71,7 +68,7 @@ variable "create_service_account" {
   default = "false"
 }
 
-variable "service_account_email" { 
+variable "service_account_email" {
 }
 
 

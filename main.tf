@@ -1,18 +1,4 @@
 # ------------------------------------------------------------
-#   PROVIDER BLOCK
-# ------------------------------------------------------------
-
-provider "google-beta" {
-  credentials = var.credentials_path
-  version     = "~> 3.0"
-}
-
-provider "google" {
-  credentials = var.credentials_path
-  version     = "~> 3.0"
-}
-
-# ------------------------------------------------------------
 #   CREATE REGIONAL CLUSTER
 # ------------------------------------------------------------
 
@@ -79,15 +65,15 @@ module "gke" {
   node_pools_labels = {
     # all = {}
 
-    core-pool = {   
-        "hub.jupyter.org/node-purpose" = "core"
+    core-pool = {
+      "hub.jupyter.org/node-purpose" = "core"
     }
-    
+
 
     user-pool = {
-        "hub.jupyter.org/node-purpose" = "user"
+      "hub.jupyter.org/node-purpose" = "user"
     }
-    
+
   }
 
 
