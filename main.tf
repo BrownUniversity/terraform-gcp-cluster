@@ -11,10 +11,10 @@ module "gke" {
   regional                   = var.regional
   region                     = var.region
   zones                      = var.node_zones
-  network                    = var.network_name
+  network                    = var.network
   subnetwork                 = var.subnetwork
-  ip_range_pods              = var.range_name_pods
-  ip_range_services          = var.range_name_services
+  ip_range_pods              = var.ip_range_pods
+  ip_range_services          = var.ip_range_services
   logging_service            = var.logging_service
   monitoring_service         = var.monitoring_service
   maintenance_start_time     = var.maintenance_start_time
