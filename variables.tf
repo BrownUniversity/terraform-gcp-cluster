@@ -31,22 +31,18 @@ variable "node_zones" {
 
 variable network {
   description = "The VPC network to host the cluster in."
-  default     = "kubernetes-vpc"
 }
 
 variable "subnetwork" {
   description = "The subnetwork to host the cluster in"
-  default     = "kubernetes-subnet"
 }
 
 variable ip_range_pods {
   description = "The range name for pods"
-  default     = "kubernetes-pods"
 }
 
 variable ip_range_services {
   description = "The range name for services"
-  default     = "kubernetes-services"
 }
 
 variable "monitoring_service" {
@@ -69,6 +65,7 @@ variable "create_service_account" {
 }
 
 variable "service_account_email" {
+
 }
 
 

@@ -9,9 +9,8 @@ locals {
 }
 
 # ------------------------------------------------------------
-#   MAIN BLOCK
+#   Project
 # ------------------------------------------------------------
-# Create the GCP Project
 module "project" {
   source          = "git@github.com:BrownUniversity/terraform-gcp-project.git"
   project_name    = local.project_name
@@ -21,7 +20,9 @@ module "project" {
   activate_apis   = var.activate_apis
 }
 
-
+# ------------------------------------------------------------
+#   Network
+# ------------------------------------------------------------
 resource "random_string" "suffix" {
   length  = 4
   special = false
@@ -52,7 +53,9 @@ resource "google_compute_subnetwork" "main" {
   }
 }
 
-
+# ------------------------------------------------------------
+#   Cluster
+# ------------------------------------------------------------
 module "simple-cluster" {
   source = "../../"
 
