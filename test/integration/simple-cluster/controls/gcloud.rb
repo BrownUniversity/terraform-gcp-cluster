@@ -24,7 +24,7 @@ describe google_project(project: project_id) do
   its('name') { should eq project_name }
 end
 
-
+# K8s Cluster Test
 describe google_container_cluster(project: project_id, location: location, name: cluster_name) do
   # It's up and running
   it { should exist }
@@ -45,6 +45,7 @@ describe google_container_cluster(project: project_id, location: location, name:
   its('node_config.service_account'){should eq service_account}
 end
 
+# Node Pool Tests
 describe google_container_node_pools(project: project_id, location: location, cluster_name: cluster_name) do
   its('node_pool_names') { should include "default-pool" }
   its('node_pool_names') { should include "user-pool" }
@@ -58,3 +59,5 @@ google_container_node_pools(project: project_id, location: location, cluster_nam
     its('status') { should eq 'RUNNING' }
   end
 end
+
+
