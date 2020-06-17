@@ -13,7 +13,7 @@ output "region" {
 
 output "cluster_name" {
   description = "Cluster name"
-  value       = module.gke.cluster_name
+  value       = var.cluster_name
 }
 
 output "network" {

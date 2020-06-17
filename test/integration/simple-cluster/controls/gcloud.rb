@@ -6,15 +6,11 @@ project_id = attribute('project_id')
 project_name= attribute('project_name')
 location = attribute('location')
 service_account = attribute('service_account')
+network_name = attribute('network_prefix') + '-' + attribute('random_string')
+cluster_name = attribute('cluster_name')
 
-# TODO : get the follow variables from attributes
-# network_name = attribute('network_prefix') + '-' + attribute('random_string')
-# cluster_name = attribute('cluster_name')
 
-network_name = 'cft-gke-test-12i5'
-cluster_name = 'default'
-
-# you add controls here
+# Project Tests
 describe google_project(project: project_id) do
   it { should exist }
   its('project_id') { should eq project_id }
@@ -49,3 +45,16 @@ describe google_container_cluster(project: project_id, location: location, name:
   its('node_config.service_account'){should eq service_account}
 end
 
+describe google_container_node_pools(project: project_id, location: location, cluster_name: cluster_name) do
+  its('node_pool_names') { should include "default-pool" }
+  its('node_pool_names') { should include "user-pool" }
+  its('node_pool_names') { should include "core-pool" }
+
+end
+
+google_container_node_pools(project: project_id, location: location, cluster_name: cluster_name).where(node_pool_name: /-pool$/).node_pool_names.each do |node_pool_name|
+  describe google_container_node_pool(project: project_id, location: location, cluster_name: cluster_name, nodepool_name: node_pool_name) do
+    it { should exist }
+    its('status') { should eq 'RUNNING' }
+  end
+end
