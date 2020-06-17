@@ -7,3 +7,4 @@ attributes.yml
 secrets-gcp.json
 .kitchen.kitchen/
 .kitchen.local.yml
+.kitchen

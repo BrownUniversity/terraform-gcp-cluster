@@ -5,6 +5,7 @@ title "Cluster Section"
 project_id = attribute('project_id')
 project_name= attribute('project_name')
 location = attribute('location')
+service_account = attribute('service_account')
 
 # TODO : get the follow variables from attributes
 # network_name = attribute('network_prefix') + '-' + attribute('random_string')
@@ -45,6 +46,6 @@ describe google_container_cluster(project: project_id, location: location, name:
   its('node_config.machine_type'){should eq "n1-standard-1"}
   its('node_pools.count'){should eq 3}
   its('node_config.oauth_scopes'){should eq ["https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring"]}
-
+  its('node_config.service_account'){should eq service_account}
 end
 
