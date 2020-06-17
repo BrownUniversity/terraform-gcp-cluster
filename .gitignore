@@ -3,3 +3,7 @@ terraform*.json
 *.tfvars
 *.tfstate*
 *.tfstate.backup
+attributes.yml
+secrets-gcp.json
+.kitchen.kitchen/
+.kitchen.local.yml

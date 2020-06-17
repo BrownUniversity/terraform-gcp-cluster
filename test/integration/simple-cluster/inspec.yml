@@ -1,17 +1,33 @@
-name: tests
+name: simple-cluster
 title: GCP InSpec Profile
 maintainer: Isabel Restrepo
 copyright: Brown University
-copyright_email: you@example.com
 license: Apache-2.0
 summary: An InSpec Compliance Profile For GCP
 version: 0.1.0
 inspec_version: '>= 2.3.5'
 attributes:
-- name: gcp_project_id
-  required: true
-  description: 'The GCP project identifier.'
-  type: string
+  - name: project_id
+    required: true
+    type: string
+  - name: location
+    required: true
+    type: string
+  - name: cluster_name
+    required: true
+    type: string
+  - name: kubernetes_endpoint
+    required: true
+    type: string
+  - name: client_token
+    required: true
+    type: string
+  - name: network_prefix
+    required: true
+    type: string
+  - name: random_string
+    required: true
+    type: string
 depends:
 - name: inspec-gcp
   url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz

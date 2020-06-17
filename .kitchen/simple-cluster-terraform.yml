@@ -1,0 +1,56 @@
+---
+last_action: verify
+last_error: 
+kitchen_terraform_outputs:
+  ca_certificate:
+    sensitive: false
+    type: string
+    value: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURERENDQWZTZ0F3SUJBZ0lSQUpMYUU1akkxdVltUEFoSUhralhyUEF3RFFZSktvWklodmNOQVFFTEJRQXcKTHpFdE1Dc0dBMVVFQXhNa1lURXhOV1JtT1dFdFlUQTBPUzAwWmpKaUxXSTFPREV0TUdRMlpEQTROamcwWXpJMQpNQjRYRFRJd01EWXhOekUzTWpVeE1Wb1hEVEkxTURZeE5qRTRNalV4TVZvd0x6RXRNQ3NHQTFVRUF4TWtZVEV4Ck5XUm1PV0V0WVRBME9TMDBaakppTFdJMU9ERXRNR1EyWkRBNE5qZzBZekkxTUlJQklqQU5CZ2txaGtpRzl3MEIKQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBMERHYUdCQ21QRXNYVk5oa2NpK3pINDFvMEZGZEF3VDdqOWZreW1IMgp2WW1ZMnRZSDErQ3U4akpMR0ppaS85R0x5NTdBSW15WTZsblFhTUdCZFM4SXgyZlNZVzhya2lFdWJtYmthNjV4ClAzTEFqQmk3dElqcy9rc1pqNDdvZE1KekV4RWxNUnF2ZVN5L1J5SzVwWDg5ZUdEclpuQ0lVaWhXeExZRnI3STgKalNaS0duQm9VUXFkb2ZnU2dBR3ZQK3kzSnh5a093dzV6RE9Qa3RvMUN5QzJFQW9sK1NPTlIwRGViNWhTN1lUZQptOWwxSlRaREMyQUdIM3NnSWoza21LNWZLTDBkbHVFS0NxVFVaZzg4WDdGTGVmdnF3Vjh3bFJoYUpxenl4ZzYrClk1TXVaYkpOelpSVFVJWWxIbi8rVWsxR3o2Sy9CWU5DTHRuTHIwNEtnVFNBRHdJREFRQUJveU13SVRBT0JnTlYKSFE4QkFmOEVCQU1DQWdRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQQp3cmdJNVQ5UHEzUGp5MzFnQ2VjbkxlYWRPdStrRkRlUU14VkN5R09hZ0k3V05FLytvdUtPSVlnZ1RZOVBQRHhDCm9yVXNJTC8xbE9TN1FhazJvcWdFM3FzVFpleG5pMHJzU3VRMytlSXdhWjV4cU0vMThXYUlONGdvQ2YwSDVOemIKRmpNNTVIMjF3Nk5paWt5ZzBFTXFKNTRaTEdsdlpidWZUcUVhbmYwbUtIUVpZYWw0RzBsUEtsQzNlcm9lbEQrVAprUGpoUTkrd3pMeGlNeFZjUHZXVHdPMnl6TE43Tk42SzJubWg1azJCT0dOQytkRGRtMUFJRklKQTQwRHhmMGp2ClV2VXJUVGFxTnExWDVydTdqcWpFMHBoQldjNk5YenV6TzFkYng3YUhzQ2VqVXMzcHZPYXV1aTVIMUpSWHo1SDYKYndpdUhsY0c1emxHTTdPYWZZeFNZUT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+  client_token:
+    sensitive: true
+    type: string
+    value: eWEyOS5jLktwWUIwQWVQclpqMU1GeThwaXVqdmpScE1YSG5xOFZxSWlwZ2sxeEt3R0ZYMnFRYUZYbTdJZ2J3Vm0xaEFjc2pJdUluV2pfZUx1dGVLV0VYMzFsQWgxMXhtTlZzc3FpdW95Qm9LcDlRRjRvdHFmM3pVSUdFM214QzRYWlloaTBVd0d4TlJIV3F5RWF5LTFSUlpIRG9KYUllSkFtY1R2SXZhRTZtVll1ZERvNUZvY0hJbVFfSEVQanVVa0t2T3Y2cGRfMllJa3d0Rm9Uaw==
+  ip_range_pods:
+    sensitive: false
+    type: string
+    value: cft-gke-test-pods-12i5
+  ip_range_services:
+    sensitive: false
+    type: string
+    value: cft-gke-test-services-12i5
+  location:
+    sensitive: false
+    type: string
+    value: us-east1
+  network:
+    sensitive: false
+    type: string
+    value: cft-gke-test-12i5
+  project_id:
+    sensitive: false
+    type: string
+    value: inspec-cluster-test1-6765
+  project_name:
+    sensitive: false
+    type: string
+    value: inspec-cluster-test1
+  region:
+    sensitive: false
+    type: string
+    value: us-east1
+  service_account:
+    sensitive: false
+    type: string
+    value: project-service-account@inspec-cluster-test1-6765.iam.gserviceaccount.com
+  subnetwork:
+    sensitive: false
+    type: string
+    value: cft-gke-test-12i5
+  zones:
+    sensitive: false
+    type:
+    - list
+    - string
+    value:
+    - us-east1-b
+kitchen_terraform_variables: {}
