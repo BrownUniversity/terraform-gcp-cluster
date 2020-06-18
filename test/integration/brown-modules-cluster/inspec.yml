@@ -1,0 +1,46 @@
+name: brown-modules-cluster
+title: GCP InSpec Profile
+maintainer: Isabel Restrepo
+copyright: Brown University
+license: Apache-2.0
+summary: An InSpec Compliance Profile For GCP
+version: 0.1.0
+inspec_version: '>= 2.3.5'
+attributes:
+  - name: project_id
+    required: true
+    type: string
+  - name: location
+    required: true
+    type: string
+  - name: cluster_name
+    required: true
+    type: string
+  - name: kubernetes_endpoint
+    required: true
+    type: string
+  - name: client_token
+    required: true
+    type: string
+  - name: network_prefix
+    required: true
+    type: string
+  - name: subnet_ip
+    required: true
+    type: string
+  - name: subnet_name
+    required: true
+    type: string
+  - name: network_name
+    required: true
+    type: string
+  - name: routing_mode
+    required: true
+    type: string
+  - name: zones
+    required: true
+depends:
+- name: inspec-gcp
+  url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
+supports:
+- platform: gcp

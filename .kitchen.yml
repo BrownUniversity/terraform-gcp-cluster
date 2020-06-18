@@ -16,3 +16,7 @@
         driver:
           name: terraform
           root_module_directory: examples/simple-cluster
+      - name: brown-modules-cluster
+        driver:
+          name: terraform
+          root_module_directory: examples/brown-modules-cluster
