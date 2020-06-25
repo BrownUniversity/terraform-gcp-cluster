@@ -3,10 +3,11 @@
 # These resources are directly tested.
 # ----------------------------------------------------------------------------
 locals {
-  gcp_region   = "us-east1"
-  gcp_zone     = "us-east1-b"
-  project_name = "inspec-cluster-test1"
+  gcp_region     = "us-east1"
+  gcp_zone       = "us-east1-b"
+  project_name   = "inspec-cluster-test1"
   network_prefix = "cft-gke-test"
+  regional       = false
 }
 
 # ------------------------------------------------------------
@@ -61,7 +62,7 @@ module "simple_cluster" {
   ip_range_pods     = google_compute_subnetwork.main.secondary_ip_range[0].range_name
   ip_range_services = google_compute_subnetwork.main.secondary_ip_range[1].range_name
 
-  regional                   = true
+  regional                   = local.regional
   region                     = local.gcp_region
   node_zones                 = [local.gcp_zone]
   maintenance_start_time     = "03:00"

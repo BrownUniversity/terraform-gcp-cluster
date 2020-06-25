@@ -7,6 +7,7 @@ locals {
   gcp_zone     = "us-east1-b"
   project_name = "inspec-cluster-brown"
   network_prefix = "cft-gke-test"
+  regional = false
 }
 
 # ------------------------------------------------------------
@@ -38,7 +39,7 @@ module "simple_cluster" {
   network           = module.vpc.network_name
   subnetwork        = module.vpc.subnet_name
 
-  regional                   = true
+  regional                   = local.regional
   region                     = local.gcp_region
   node_zones                 = [local.gcp_zone]
   maintenance_start_time     = "03:00"
