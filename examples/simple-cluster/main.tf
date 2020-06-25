@@ -9,6 +9,11 @@ locals {
   network_prefix = "cft-gke-test"
 }
 
+provider "github" {
+  token        = var.github_token
+  organization = var.github_organization
+}
+
 # ------------------------------------------------------------
 #   MAIN BLOCK
 # ------------------------------------------------------------

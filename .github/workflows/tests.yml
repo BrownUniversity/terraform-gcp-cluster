@@ -10,8 +10,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-      with:
-        token: ${{secrets.GH_TOKEN}}
     - name: Create Credential File
       run: |
         echo "$GCP_CREDENTIAL_JSON" > /tmp/credentials.json
@@ -20,6 +18,8 @@ jobs:
     - name: Run Kitchen
       run: kitchen test
       env:
+        TF_VAR_github_organization: BrownUniversity
+        TF_VAR_github_token: ${{ secrets.GH_token }}
         TF_VAR_billing_account: ${{ secrets.GCP_BILLING_ACCOUNT }}
         TF_VAR_org_id: ${{ secrets.GCP_ORG_ID }}
         TF_VAR_folder_id: ${{ secrets.GCP_FOLDER_ID }}
