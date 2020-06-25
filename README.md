@@ -1,4 +1,4 @@
-# renku Cluster
+# Renku Cluster
 
 This folder contains a [Terraform](https://www.terraform.io/) module to deploy a 
 kubernetes cluster in [GCP](https://cloud.google.com/).
