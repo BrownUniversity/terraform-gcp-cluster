@@ -10,30 +10,25 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Create .ssh directory
-      uses: actions/bin/sh@master
-      with:
-        args: '"mkdir -p $HOME/.ssh"'
-    - name: Write SSH key to disk
-      uses: actions/bin/sh@master
+    - name: Setup SSH Keys and known_hosts
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY_PRIVATE }}
-      with:
-        args: '"echo \"$SSH_PRIVATE_KEY\" > $HOME/.ssh/id_rsa"'
-    - name: Set SSH key permissions
-      uses: actions/bin/sh@master
-      with:
-        args: '"chmod 400 $HOME/.ssh/id_rsa"'
-    - name: Create Credential File
+        PRIVATE_KEY: ${{ secrets.SSH_KEY_PRIVATE }}
       run: |
-        echo "$GCP_CREDENTIAL_JSON" > /tmp/credentials.json
-      env:
-        GCP_CREDENTIAL_JSON: ${{ secrets.GCP_CREDENTIAL_JSON}}
+        mkdir -p $HOME/.ssh &&
+        echo \"$SSH_PRIVATE_KEY\" > $HOME/.ssh/id_rsa &&
+        chmod 400 $HOME/.ssh/id_rsa
+        
     - name: Terraform Init
       uses: hashicorp/terraform-github-actions/init@v0.4.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GIT_SSH_COMMAND: "ssh -o StrictHostKeyChecking=no -i $HOME/.ssh/id_rsa"
+
+    - name: Create Credential File
+      run: |
+        echo "$GCP_CREDENTIAL_JSON" > /tmp/credentials.json
+      env:
+        GCP_CREDENTIAL_JSON: ${{ secrets.GCP_CREDENTIAL_JSON}}
     - name: Run Kitchen
       run: kitchen test
       env:
