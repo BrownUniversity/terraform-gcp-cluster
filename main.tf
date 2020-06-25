@@ -92,17 +92,3 @@ module "gke" {
 
 }
 
-# ------------------------------------------------------------
-#  CONNECT KUBECTL
-# ------------------------------------------------------------
-
-resource "null_resource" "cluster_credentials" {
-  provisioner "local-exec" {
-    command = "gcloud container clusters get-credentials ${module.gke.name} --region ${module.gke.location} --project ${var.project_id}"
-  }
-
-  depends_on = [module.gke]
-}
-
-data "google_client_config" "default" {}
-
