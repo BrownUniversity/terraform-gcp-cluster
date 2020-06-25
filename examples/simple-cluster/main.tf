@@ -14,7 +14,7 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git@github.com:BrownUniversity/terraform-gcp-project.git"
+  source          = "git::https://github.com:BrownUniversity/terraform-gcp-project.git"
   project_name    = local.project_name
   org_id          = var.org_id
   billing_account = var.billing_account
