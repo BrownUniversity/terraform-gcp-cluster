@@ -17,6 +17,8 @@ jobs:
         GCP_CREDENTIAL_JSON: ${{ secrets.GCP_CREDENTIAL_JSON}}
     - name: Run Kitchen
       run: kitchen test
+      with:
+        repo-token: ${{ secrets.GITHUB_TOKEN }}
       env:
         TF_VAR_billing_account: ${{ secrets.GCP_BILLING_ACCOUNT }}
         TF_VAR_org_id: ${{ secrets.GCP_ORG_ID }}
