@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: ${{ secrets.GH_TOKEN }}
     - name: Create Credential File
       run: |
         echo "$GCP_CREDENTIAL_JSON" > /tmp/credentials.json
