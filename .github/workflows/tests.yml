@@ -9,9 +9,9 @@ jobs:
       image: brownccv/kitchen-terraform
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
       with:
-        repo-token: ${{ secrets.GH_TOKEN }}
+        token: ${{secrets.GH_TOKEN}}
     - name: Create Credential File
       run: |
         echo "$GCP_CREDENTIAL_JSON" > /tmp/credentials.json
