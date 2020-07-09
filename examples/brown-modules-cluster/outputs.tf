@@ -29,41 +29,17 @@ output "zones" {
   value       = module.simple_cluster.zones
 }
 
-output "master_kubernetes_version" {
-  description = "The master Kubernetes version"
-  value       = module.simple_cluster.master_kubernetes_version
-}
-
-output "kubernetes_endpoint" {
-  sensitive = true
-  value     = module.simple_cluster.kubernetes_endpoint
-}
-
-output "client_token" {
-  sensitive = true
-  value     = module.simple_cluster.client_token
-}
-
-output "ca_certificate" {
-  description = "The cluster CA certificate"
-  value       = module.simple_cluster.ca_certificate
-}
-
 output "service_account" {
   description = "The service account to default running nodes as if not overridden in `node_pools`."
   value       = module.simple_cluster.service_account
 }
 
 output "network_name" {
-    value = module.vpc.network_name
+  value = module.vpc.network_name
 }
 
 output "subnet_name" {
-    value = module.vpc.subnet_name
-}
-
-output "subnet_region" {
-    value = module.vpc.subnet_region
+  value = module.vpc.subnet_name
 }
 
 output "routing_mode" {
