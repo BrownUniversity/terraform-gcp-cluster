@@ -10,7 +10,3 @@ variable "activate_apis" {
     "appengine.googleapis.com"
   ]
 }
-
-variable "network_name" {}
-variable "subnet_name" {}
-variable "routing_mode" {}

@@ -3,11 +3,15 @@
 # These resources are directly tested.
 # ----------------------------------------------------------------------------
 locals {
-  gcp_region   = "us-east1"
-  gcp_zone     = "us-east1-b"
-  project_name = "inspec-cluster-brown"
+  gcp_region     = "us-east1"
+  gcp_zone       = "us-east1-b"
+  project_name   = "inspec-cluster-brown"
   network_prefix = "cft-gke-test"
-  regional = false
+  regional       = false
+  network_name   = "network-01"
+  subnet_name    = "subnet-01"
+  subnet_region  = "us-east1"
+  routing_mode   = "REGIONAL"
 }
 
 # ------------------------------------------------------------
@@ -15,7 +19,7 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git"
+  source          = "git@github.com:BrownUniversity/terraform-gcp-project.git"
   project_name    = local.project_name
   org_id          = var.org_id
   billing_account = var.billing_account
@@ -24,20 +28,20 @@ module "project" {
 }
 
 module "vpc" {
-  source                     = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=dev"
-  project_id                 = module.project.project_id
-  network_name               = var.network_name
-  subnet_name                = var.subnet_name
-  subnet_region              = local.gcp_region
-  routing_mode               = var.routing_mode
+  source        = "git@github.com:BrownUniversity/terraform-gcp-vpc.git"
+  project_id    = module.project.project_id
+  network_name  = local.network_name
+  subnet_name   = local.subnet_name
+  subnet_region = local.gcp_region
+  routing_mode  = local.routing_mode
 }
 
 
 module "simple_cluster" {
   source = "../../"
 
-  network           = module.vpc.network_name
-  subnetwork        = module.vpc.subnet_name
+  network    = module.vpc.network_name
+  subnetwork = module.vpc.subnet_name
 
   regional                   = local.regional
   region                     = local.gcp_region
