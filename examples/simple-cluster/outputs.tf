@@ -55,16 +55,6 @@ output "master_kubernetes_version" {
   value       = module.simple_cluster.master_kubernetes_version
 }
 
-output "kubernetes_endpoint" {
-  sensitive = true
-  value     = module.simple_cluster.kubernetes_endpoint
-}
-
-output "client_token" {
-  sensitive = true
-  value     = module.simple_cluster.client_token
-}
-
 output "ca_certificate" {
   description = "The cluster CA certificate"
   value       = module.simple_cluster.ca_certificate

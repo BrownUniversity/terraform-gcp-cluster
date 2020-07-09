@@ -9,60 +9,28 @@ The cluster contains a core-node-pool and an user-node-pool. The cluster is conf
 ## How do you use this module?
 
 This folder defines a [Terraform module](https://www.terraform.io/docs/modules/usage.html), which you can use in your
-code by adding a `module` configuration and setting its `source` parameter to URL of this folder. For instance the main code for renku invokes this module as follows
+code by adding a `module` configuration and setting its `source` parameter to URL of this folder. See See the [examples](/examples) folder for guidance
 
-```hcl
-module "renku_cluster" {
-  source                      = "./modules/cluster"
+## Testing
 
-  credentials_path           = var.credentials_path
-  project_id                   = module.renku_project.project_id
-  cluster_name_suffix         = var.cluster_name_suffix
-  regional                    = var.regional
-  region                      = var.region
-  network_name                = module.renku_vpc.network_name
-  subnetwork                  = module.renku_vpc.subnetwork
-  # range_name_pods             = var.range_name_pods
-  # range_name_services         = var.range_name_services
-  logging_service             = var.logging_service
-  monitoring_service          = var.monitoring_service
-  maintenance_start_time      = var.maintenance_start_time
-  create_service_account      = var.create_service_account
-  service_account_email       = module.renku_project.service_account_email
-  skip_provisioners           = var.skip_provisioners
-  http_load_balancing         = var.http_load_balancing
-  horizontal_pod_autoscaling  = var.horizontal_pod_autoscaling
-  network_policy              = var.network_policy
-  enable_private_nodes        = var.enable_private_nodes
-  master_ipv4_cidr_block      = var.master_ipv4_cidr_block
-  remove_default_node_pool    = var.remove_default_node_pool
+This repository uses Kitchen-Terraform to test the terraform modules. In the [examples](/examples)directory you can find examples of how each module can be used. Those examples are fed to [Test Kitchen][https://kitchen.ci/]. To install test kitchen, first make sure you have Ruby and bundler installed.
 
-
-  core_pool_name               = var.core_pool_name
-  core_pool_machine_type       = var.core_pool_machine_type
-  core_pool_min_count          = var.core_pool_min_count
-  core_pool_max_count          = var.core_pool_max_count
-  core_pool_local_ssd_count    = var.core_pool_local_ssd_count
-  core_pool_disk_size_gb       = var.core_pool_disk_size_gb
-  core_pool_disk_type          = var.core_pool_disk_type
-  core_pool_image_type         = var.core_pool_image_type
-  core_pool_auto_repair        = var.core_pool_auto_repair
-  core_pool_auto_upgrade       = var.core_pool_auto_upgrade
-  core_pool_preemptible        = var.core_pool_preemptible
-  core_pool_initial_node_count = var.core_pool_initial_node_count
-
-  user_pool_name               = var.user_pool_name
-  user_pool_machine_type       = var.user_pool_machine_type
-  user_pool_min_count          = var.user_pool_min_count
-  user_pool_max_count          = var.user_pool_max_count
-  user_pool_local_ssd_count    = var.user_pool_local_ssd_count
-  user_pool_disk_size_gb       = var.user_pool_disk_size_gb
-  user_pool_disk_type          = var.user_pool_disk_type
-  user_pool_image_type         = var.user_pool_image_type
-  user_pool_auto_repair        = var.user_pool_auto_repair
-  user_pool_auto_upgrade       = var.user_pool_auto_upgrade
-  user_pool_preemptible        = var.user_pool_preemptible
-  user_pool_initial_node_count = var.user_pool_initial_node_count
-  
-}
 ```
+brew install ruby
+gem install bundler
+```
+
+Then install the prerequisites for test kitchen.
+
+```
+bundle install
+```
+
+You'll need to add some common credentials. Copy the `examples/shared/terraform.tfvars.example` to `examples/shared/terraform.tfvars` and run the commands in the file to find the billing account id and the organization id.
+
+And now you're ready to run test kitchen. Test kitchen has a couple main commands:
+
+- `bundle exec kitchen create` initializes terraform.
+- `bundle exec kitchen converge` runs our terraform examples.
+- `bundle exec kitchen verify` runs our inspec scripts against a converged kitchen.
+- `bundle exec kitchen test` does all the above.

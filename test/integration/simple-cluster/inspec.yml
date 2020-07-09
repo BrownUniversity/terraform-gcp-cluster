@@ -16,12 +16,6 @@ attributes:
   - name: cluster_name
     required: true
     type: string
-  - name: kubernetes_endpoint
-    required: true
-    type: string
-  - name: client_token
-    required: true
-    type: string
   - name: network_prefix
     required: true
     type: string
