@@ -12,11 +12,11 @@
       - name: terraform
     
     suites:
-    #   - name: simple-cluster
-    #     driver:
-    #       name: terraform
-    #       root_module_directory: examples/simple-cluster
-    #       command_timeout: 12000
+      - name: simple-cluster
+        driver:
+          name: terraform
+          root_module_directory: examples/simple-cluster
+          command_timeout: 12000
       - name: brown-modules-cluster
         driver:
           name: terraform
