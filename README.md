@@ -1,5 +1,7 @@
 # Renku Cluster
 
+[![Actions Status](https://github.com/BrownUniversity/terraform-gcp-cluster/workflows/kitchen-tests/badge.svg)](https://github.com/BrownUniversity/terraform-gcp-cluster/actions)
+
 This folder contains a [Terraform](https://www.terraform.io/) module to deploy a 
 kubernetes cluster in [GCP](https://cloud.google.com/).
 The cluster contains a core-node-pool and an user-node-pool. The cluster is configured to schedule user pods into the user pool
