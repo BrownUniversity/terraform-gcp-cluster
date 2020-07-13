@@ -36,7 +36,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: fusion-engineering/setup-git-credentials@v2
-        with:
+      with:
         credentials: ${{secrets.GIT_CREDENTIALS}}
     - name: Create Credential File
         run: |
