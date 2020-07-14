@@ -7,14 +7,21 @@
       systems:
         - name: inspec-gcp
           backend: gcp
-    
+
     platforms:
       - name: terraform
     
     suites:
-      - name: terraform-gcp-cluster
+      - name: simple-cluster
         driver:
           name: terraform
-          root_module_directory: fixtures
-          parallelism: 4
-          command_timeout: 1800
+          root_module_directory: examples/simple-cluster
+          command_timeout: 12000
+          parallelism: 1
+      - name: brown-modules-cluster
+        driver:
+          name: terraform
+          root_module_directory: examples/brown-modules-cluster
+          command_timeout: 12000
+          parallelism: 1
+          

@@ -1,18 +1,4 @@
 # ------------------------------------------------------------
-#   PROVIDER BLOCK
-# ------------------------------------------------------------
-
-provider "google-beta" {
-  credentials = var.credentials_path
-  version     = "~> 3.0"
-}
-
-provider "google" {
-  credentials = var.credentials_path
-  version     = "~> 3.0"
-}
-
-# ------------------------------------------------------------
 #   CREATE REGIONAL CLUSTER
 # ------------------------------------------------------------
 
@@ -20,15 +6,16 @@ provider "google" {
 # Create the GKE Cluster
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
+  version                    = "10.0.0"
   project_id                 = var.project_id
   name                       = var.cluster_name
   regional                   = var.regional
   region                     = var.region
   zones                      = var.node_zones
-  network                    = var.network_name
+  network                    = var.network
   subnetwork                 = var.subnetwork
-  ip_range_pods              = var.range_name_pods
-  ip_range_services          = var.range_name_services
+  ip_range_pods              = var.ip_range_pods
+  ip_range_services          = var.ip_range_services
   logging_service            = var.logging_service
   monitoring_service         = var.monitoring_service
   maintenance_start_time     = var.maintenance_start_time
@@ -79,15 +66,15 @@ module "gke" {
   node_pools_labels = {
     # all = {}
 
-    core-pool = {   
-        "hub.jupyter.org/node-purpose" = "core"
+    core-pool = {
+      "hub.jupyter.org/node-purpose" = "core"
     }
-    
+
 
     user-pool = {
-        "hub.jupyter.org/node-purpose" = "user"
+      "hub.jupyter.org/node-purpose" = "user"
     }
-    
+
   }
 
 
@@ -105,18 +92,4 @@ module "gke" {
   }
 
 }
-
-# ------------------------------------------------------------
-#  CONNECT KUBECTL
-# ------------------------------------------------------------
-
-resource "null_resource" "cluster_credentials" {
-  provisioner "local-exec" {
-    command = "gcloud container clusters get-credentials ${module.gke.name} --region ${module.gke.location} --project ${var.project_id}"
-  }
-
-  depends_on = [module.gke]
-}
-
-data "google_client_config" "default" {}
 

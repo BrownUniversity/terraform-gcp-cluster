@@ -5,9 +5,13 @@
 locals {
   gcp_region     = "us-east1"
   gcp_zone       = "us-east1-b"
-  project_name   = "inspec-cluster-test1"
+  project_name   = "inspec-cluster-brown"
   network_prefix = "cft-gke-test"
   regional       = false
+  network_name   = "network-01"
+  subnet_name    = "subnet-01"
+  subnet_region  = "us-east1"
+  routing_mode   = "REGIONAL"
 }
 
 # ------------------------------------------------------------
@@ -15,52 +19,29 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git@github.com:BrownUniversity/terraform-gcp-project.git"
-  project_name    = local.project_name
-  org_id          = var.org_id
-  billing_account = var.billing_account
-  folder_id       = var.folder_id
-  activate_apis   = var.activate_apis
+  source                  = "git@github.com:BrownUniversity/terraform-gcp-project.git"
+  project_name            = local.project_name
+  org_id                  = var.org_id
+  billing_account         = var.billing_account
+  folder_id               = var.folder_id
+  activate_apis           = var.activate_apis
 }
 
-resource "random_string" "suffix" {
-  length  = 4
-  special = false
-  upper   = false
-}
-
-resource "google_compute_network" "main" {
-  project                 = module.project.project_id
-  name                    = "${local.network_prefix}-${random_string.suffix.result}"
-  auto_create_subnetworks = false
-}
-
-resource "google_compute_subnetwork" "main" {
-  project       = module.project.project_id
-  name          = "${local.network_prefix}-${random_string.suffix.result}"
-  ip_cidr_range = "10.0.0.0/17"
-  region        = local.gcp_region
-  network       = google_compute_network.main.self_link
-
-  secondary_ip_range {
-    range_name    = "${local.network_prefix}-pods-${random_string.suffix.result}"
-    ip_cidr_range = "192.168.0.0/18"
-  }
-
-  secondary_ip_range {
-    range_name    = "${local.network_prefix}-services-${random_string.suffix.result}"
-    ip_cidr_range = "192.168.64.0/18"
-  }
+module "vpc" {
+  source        = "git@github.com:BrownUniversity/terraform-gcp-vpc.git"
+  project_id    = module.project.project_id
+  network_name  = local.network_name
+  subnet_name   = local.subnet_name
+  subnet_region = local.gcp_region
+  routing_mode  = local.routing_mode
 }
 
 
 module "simple_cluster" {
   source = "../../"
 
-  network           = google_compute_network.main.name
-  subnetwork        = google_compute_subnetwork.main.name
-  ip_range_pods     = google_compute_subnetwork.main.secondary_ip_range[0].range_name
-  ip_range_services = google_compute_subnetwork.main.secondary_ip_range[1].range_name
+  network    = module.vpc.network_name
+  subnetwork = module.vpc.subnet_name
 
   regional                   = local.regional
   region                     = local.gcp_region
