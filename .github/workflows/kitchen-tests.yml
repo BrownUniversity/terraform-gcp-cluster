@@ -12,10 +12,10 @@ jobs:
         with:
           base: ${{ github.ref }}
           filters: |
-          all:
-            - '.github/workflows/kitchen-tests.yml'
-            - 'Dockerfile'
-            - 'Gemfile*'
+            all:
+              - '.github/workflows/kitchen-tests.yml'
+              - 'Dockerfile'
+              - 'Gemfile*'
       - name: Build and Push to Docker Hub
         if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
         uses: docker/build-push-action@v1
