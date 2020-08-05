@@ -54,7 +54,7 @@ jobs:
     if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
     container:
-        image: brownccv/kitchen-terraform
+        image: brownccv/kitchen-terraform:gcp-cluster
     steps:
     - uses: actions/checkout@v2
     - name: Create Credential File
