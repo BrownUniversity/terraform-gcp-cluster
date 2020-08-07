@@ -25,11 +25,11 @@ output "cluster_name" {
 }
 
 output "network_name" {
-    value = module.vpc.network_name
+  value = module.vpc.network_name
 }
 
 output "subnet_name" {
-    value = module.vpc.subnet_name
+  value = module.vpc.subnet_name
 }
 
 
