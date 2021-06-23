@@ -54,6 +54,7 @@ jobs:
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
           # Use Docker `latest` tag convention
           [ "$VERSION" == "main" ] && VERSION=latest
+          [ "$VERSION" == "merge" ] && VERSION="${{ github.head_ref }}
           echo $VERSION
           echo IMAGE_ID=$IMAGE_ID
           # docker tag ${{ github.repository.name }} $IMAGE_ID:${VERSION}
