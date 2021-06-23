@@ -34,7 +34,7 @@ jobs:
 
       - name: Build Image
         if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
-        run: docker build . --file Dockerfile --tag ${{ github.repository.name }} --label "runnumber=${GITHUB_RUN_ID}"
+        run: docker build . --file Dockerfile --tag "${{ github.repository_name }}"" --label "runnumber=${GITHUB_RUN_ID}"
 
       - name: Log into registry
         if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
@@ -44,7 +44,7 @@ jobs:
         id: upload
         if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
         run: |
-          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/${{ github.repository.name }}
+          IMAGE_ID=ghcr.io/${{ github.repository_owner }}/${{ github.repository_name }}
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
@@ -58,7 +58,7 @@ jobs:
           [ "$VERSION" == "merge" ] && VERSION=${{ github.head_ref }}
           echo VERSION=$VERSION
           echo IMAGE_ID=$IMAGE_ID
-          docker tag ${{ github.repository.name }} $IMAGE_ID:${VERSION}
+          docker tag ${{ github.repository_name }} $IMAGE_ID:${VERSION}
           docker push $IMAGE_ID:$VERSION
           echo "::set-output name=image::${IMAGE_ID}"
           echo "::set-output name=tag::${VERSION}"
