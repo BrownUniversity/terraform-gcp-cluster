@@ -5,9 +5,8 @@ on:
     branches:
       - main
   pull_request:
-  # workflow_dispatch:
-  # tags:
-  #   - v*
+  tags:
+    - v*
 jobs:
   docker:
     runs-on: ubuntu-latest
@@ -32,13 +31,13 @@ jobs:
               - 'Dockerfile'
               - 'Gemfile*'
 
-      # - name: Build Image
-      #   if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
-      #   run: docker build . --file Dockerfile --tag ${{ github.repository.name }} --label "runnumber=${GITHUB_RUN_ID}"
+      - name: Build Image
+        if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
+        run: docker build . --file Dockerfile --tag ${{ github.repository.name }} --label "runnumber=${GITHUB_RUN_ID}"
 
-      # - name: Log into registry
-      #   if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
-      #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+      - name: Log into registry
+        if: steps.filter.outputs.all == 'true' && !contains(github.event.commits[0].message, '[skip docker]')
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Push image to gh packages
         id: upload
@@ -55,7 +54,7 @@ jobs:
           # Use Docker `latest` tag convention
           [ "$VERSION" == "main" ] && VERSION=latest
           [ "$VERSION" == "merge" ] && VERSION=${{ github.head_ref }}
-          echo $VERSION
+          echo VERSION=$VERSION
           echo IMAGE_ID=$IMAGE_ID
           # docker tag ${{ github.repository.name }} $IMAGE_ID:${VERSION}
           # docker push $IMAGE_ID:$VERSION
