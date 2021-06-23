@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - main
-    tags:
-      - v*
   pull_request:
 
 jobs:
@@ -14,10 +12,6 @@ jobs:
     permissions:
       packages: write
       contents: read
-
-    outputs:
-      image: ${{ steps.upload.outputs.image }}
-      tag: ${{ steps.upload.outputs.tag }}
 
     steps:
       - uses: actions/checkout@v2
@@ -48,30 +42,18 @@ jobs:
 
           # Change all uppercase to lowercase
           IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
-          # Strip git ref prefix from version
-          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-          # Strip "v" prefix from tag name
-          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          # Use Docker `latest` tag when merging to main branch
-          [ "$VERSION" == "main" ] && VERSION=latest
-          # Use Docker `<branch-name>` tag when in PR
-          [ "$VERSION" == "merge" ] && VERSION=${{ github.head_ref }}
+          VERSION=latest
           echo VERSION=$VERSION
           echo IMAGE_ID=$IMAGE_ID
           docker tag ${{ github.event.repository.name }} $IMAGE_ID:${VERSION}
           docker push $IMAGE_ID:$VERSION
-          echo "::set-output name=image::${IMAGE_ID}"
-          echo "::set-output name=tag::${VERSION}"
 
   simple-cluster:
     needs: [docker]
     if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
-    env:
-      IMAGE_ID: ${{needs.job1.outputs.image}}
-      TAG: ${{needs.job1.outputs.tag}}
     container:
-      image: $IMAGE_ID:$TAG
+      image: ghcr.io/brownuniversity/terraform-gcp-cluster:latest
     steps:
     - uses: actions/checkout@v2
     - name: Create Credential File
