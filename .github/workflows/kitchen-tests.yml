@@ -52,15 +52,16 @@ jobs:
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
           [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-          # Use Docker `latest` tag convention
+          # Use Docker `latest` tag when merging to main branch
           [ "$VERSION" == "main" ] && VERSION=latest
+          # Use Docker `<branch-name>` tag when in PR
           [ "$VERSION" == "merge" ] && VERSION=${{ github.head_ref }}
           echo VERSION=$VERSION
           echo IMAGE_ID=$IMAGE_ID
-          # docker tag ${{ github.repository.name }} $IMAGE_ID:${VERSION}
-          # docker push $IMAGE_ID:$VERSION
-          # echo "::set-output name=image::${IMAGE_ID}"
-          # echo "::set-output name=tag::${VERSION}"
+          docker tag ${{ github.repository.name }} $IMAGE_ID:${VERSION}
+          docker push $IMAGE_ID:$VERSION
+          echo "::set-output name=image::${IMAGE_ID}"
+          echo "::set-output name=tag::${VERSION}"
 
   # simple-cluster:
   #   needs: [docker]
