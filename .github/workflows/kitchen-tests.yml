@@ -67,8 +67,11 @@ jobs:
     needs: [docker]
     if: "!contains(github.event.commits[0].message, '[skip ci]')"
     runs-on: ubuntu-latest
+    env:
+      IMAGE_ID: ${{needs.job1.outputs.image}}
+      TAG: ${{needs.job1.outputs.tag}}
     container:
-      image: ${{needs.job1.outputs.image}}:${{needs.job1.outputs.tag}}
+      image: $IMAGE_ID:$TAG
     steps:
     - uses: actions/checkout@v2
     - name: Create Credential File
