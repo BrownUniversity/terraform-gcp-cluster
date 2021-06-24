@@ -31,15 +31,14 @@ describe google_container_cluster(project: project_id, location: location, name:
   its('status') { should eq 'RUNNING' }
   its('locations.sort'){ should cmp ["us-east1-b"] }
 
-
   # Has correct network and subnet names
   its('network'){should eq network_name}
   its('subnetwork'){should eq network_name}
 
   # Has correct node pool configuration
   its('node_config.disk_size_gb'){should eq 100}
-  its('node_config.image_type'){should eq "COS"}
-  its('node_config.machine_type'){should eq "n1-standard-1"}
+  its('node_config.image_type'){should be_in ["COS", "COS_CONTAINERD"]}
+  its('node_config.machine_type'){should be_in ["n1-standard-1", "e2-medium"]}
   its('node_pools.count'){should eq 3}
   its('node_config.oauth_scopes'){should eq ["https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring"]}
   its('node_config.service_account'){should eq service_account}
