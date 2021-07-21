@@ -6,7 +6,7 @@
 # Create the GKE Cluster
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                    = "10.0.0"
+  version                    = "15.0.1"
   project_id                 = var.project_id
   name                       = var.cluster_name
   regional                   = var.regional
@@ -41,7 +41,6 @@ module "gke" {
       image_type         = var.core_pool_image_type
       auto_repair        = var.core_pool_auto_repair
       auto_upgrade       = var.core_pool_auto_upgrade
-      service_account    = var.service_account_email
       preemptible        = var.core_pool_preemptible
       initial_node_count = var.core_pool_initial_node_count
     },
@@ -56,7 +55,6 @@ module "gke" {
       image_type         = var.user_pool_image_type
       auto_repair        = var.user_pool_auto_repair
       auto_upgrade       = var.user_pool_auto_upgrade
-      service_account    = var.service_account_email
       preemptible        = var.user_pool_preemptible
       initial_node_count = var.user_pool_initial_node_count
     }
