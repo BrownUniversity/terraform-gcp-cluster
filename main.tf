@@ -5,7 +5,7 @@
 
 # Create the GKE Cluster
 module "gke" {
-  source                     = "github.com/terraform-google-modules/terraform-google-kubernetes-engine/tree/master/modules/beta-private-cluster?ref=v15.0.1"
+  source                     = "github.com/terraform-google-modules/terraform-google-kubernetes-engines/modules/beta-private-cluster?ref=v15.0.1"
   project_id                 = var.project_id
   name                       = var.cluster_name
   regional                   = var.regional
