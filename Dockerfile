@@ -1,4 +1,4 @@
-FROM hashicorp/terraform:1.0.0
+FROM hashicorp/terraform:1.2.5
 
 COPY .ruby-version .ruby-version
 

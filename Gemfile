@@ -1,5 +1,4 @@
 source "https://rubygems.org/" do
-    gem "kitchen-terraform", "~> 5.8"
-    gem "inspec-bin", "~> 4.37"
-    gem "public_suffix", "~>4.0.6"
+    gem "kitchen-terraform", "~> 6.1.0"
+    gem "public_suffix", "~>5.0.0"
   end

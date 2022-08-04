@@ -48,13 +48,13 @@ variable "subnetwork" {
   default     = "kubernetes-subnet"
 }
 
-variable ip_range_pods {
+variable "ip_range_pods" {
   type        = string
   description = "The range name for pods"
   default     = "kubernetes-pods"
 }
 
-variable ip_range_services {
+variable "ip_range_services" {
   type        = string
   description = "The range name for services"
   default     = "kubernetes-services"
@@ -182,7 +182,7 @@ variable "core_pool_disk_type" {
 variable "core_pool_image_type" {
   type        = string
   description = "Type of image core-component pool"
-  default     = "COS"
+  default     = "COS_CONTAINERD"
 }
 
 variable "core_pool_auto_repair" {
@@ -265,7 +265,7 @@ variable "user_pool_disk_type" {
 variable "user_pool_image_type" {
   type        = string
   description = "Type of image user pool"
-  default     = "COS"
+  default     = "COS_CONTAINERD"
 }
 
 variable "user_pool_auto_repair" {
