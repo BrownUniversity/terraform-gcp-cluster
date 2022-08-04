@@ -72,6 +72,7 @@ No resources.
 | <a name="input_core_pool_oauth_scope"></a> [core\_pool\_oauth\_scope](#input\_core\_pool\_oauth\_scope) | OAuth scope for core-component pool | `string` | `"https://www.googleapis.com/auth/cloud-platform"` | no |
 | <a name="input_core_pool_preemptible"></a> [core\_pool\_preemptible](#input\_core\_pool\_preemptible) | Make core-component pool preemptible | `bool` | `false` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Defines if service account specified to run nodes should be created. | `bool` | `false` | no |
+| <a name="input_enable_pod_security_policy"></a> [enable\_pod\_security\_policy](#input\_enable\_pod\_security\_policy) | (Beta) Configuration for the PodSecurityPolicy feature | `bool` | `true` | no |
 | <a name="input_enable_private_nodes"></a> [enable\_private\_nodes](#input\_enable\_private\_nodes) | (Beta) Whether nodes have internal IP addresses only | `bool` | `false` | no |
 | <a name="input_gke_version"></a> [gke\_version](#input\_gke\_version) | Major version of GKE | `string` | `"~> 6.0"` | no |
 | <a name="input_horizontal_pod_autoscaling"></a> [horizontal\_pod\_autoscaling](#input\_horizontal\_pod\_autoscaling) | Enable horizontal pod autoscaling addon | `bool` | `true` | no |

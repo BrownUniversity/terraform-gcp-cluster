@@ -120,6 +120,12 @@ variable "enable_private_nodes" {
   default     = false
 }
 
+variable "enable_pod_security_policy" {
+  type        = bool
+  description = "(Beta) Configuration for the PodSecurityPolicy feature"
+  default     = true
+}
+
 variable "master_ipv4_cidr_block" {
   type        = string
   description = "(Beta) The IP range in CIDR notation to use for the hosted master network"
