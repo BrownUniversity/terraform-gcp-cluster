@@ -8,28 +8,31 @@ module "gke" {
   source  = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
   version = "22.1.0"
   # kubernetes_version         = "1.22.8-gke.202"
-  project_id                 = var.project_id
-  name                       = var.cluster_name
-  regional                   = var.regional
-  region                     = var.region
-  zones                      = var.node_zones
-  network                    = var.network
-  subnetwork                 = var.subnetwork
-  ip_range_pods              = var.ip_range_pods
-  ip_range_services          = var.ip_range_services
-  logging_service            = var.logging_service
-  monitoring_service         = var.monitoring_service
-  maintenance_start_time     = var.maintenance_start_time
-  create_service_account     = var.create_service_account
-  service_account            = var.service_account_email
-  skip_provisioners          = var.skip_provisioners
-  http_load_balancing        = var.http_load_balancing
-  horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
-  network_policy             = var.network_policy
-  enable_private_nodes       = var.enable_private_nodes
-  enable_pod_security_policy = var.enable_pod_security_policy
-  master_ipv4_cidr_block     = var.master_ipv4_cidr_block
-  remove_default_node_pool   = var.remove_default_node_pool
+  project_id                        = var.project_id
+  name                              = var.cluster_name
+  regional                          = var.regional
+  region                            = var.region
+  zones                             = var.node_zones
+  network                           = var.network
+  subnetwork                        = var.subnetwork
+  ip_range_pods                     = var.ip_range_pods
+  ip_range_services                 = var.ip_range_services
+  logging_service                   = var.logging_service
+  monitoring_service                = var.monitoring_service
+  maintenance_start_time            = var.maintenance_start_time
+  create_service_account            = var.create_service_account
+  service_account                   = var.service_account_email
+  skip_provisioners                 = var.skip_provisioners
+  http_load_balancing               = var.http_load_balancing
+  horizontal_pod_autoscaling        = var.horizontal_pod_autoscaling
+  network_policy                    = var.network_policy
+  enable_private_nodes              = var.enable_private_nodes
+  enable_pod_security_policy        = var.enable_pod_security_policy
+  master_authorized_networks        = var.master_authorized_networks
+  master_ipv4_cidr_block            = var.master_ipv4_cidr_block
+  disable_legacy_metadata_endpoints = true
+  remove_default_node_pool          = var.remove_default_node_pool
+  cluster_resource_labels           = var.cluster_resource_labels
 
   node_pools = [
     {
@@ -45,6 +48,7 @@ module "gke" {
       auto_upgrade       = var.core_pool_auto_upgrade
       preemptible        = var.core_pool_preemptible
       initial_node_count = var.core_pool_initial_node_count
+
     },
     {
       name               = var.user_pool_name
