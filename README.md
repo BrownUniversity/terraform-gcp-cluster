@@ -191,7 +191,7 @@ to set and uset the `GOOGLE_APPLICATION_CREDENTIALS` variable.
 
 ### Testing
 
-This repository uses Kitchen-Terraform to test the terraform modules. In the [examples](/examples) directory you can find examples of how each module can be used. Those examples are fed to [Test Kitchen][https://kitchen.ci/]. To install test kitchen, first make sure you have Ruby and bundler installed.
+This repository uses Kitchen-Terraform to test the terraform modules. In the [examples](/examples) directory you can find examples of how each module can be used. Those examples are fed to [Test Kitchen](https://kitchen.ci/). To install test kitchen, first make sure you have Ruby and bundler installed.
 
 ```
 gem install bundler

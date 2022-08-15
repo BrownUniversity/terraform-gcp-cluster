@@ -8,3 +8,4 @@ secrets-gcp.json
 .kitchen.kitchen/
 .kitchen.local.yml
 .kitchen
+examples/simple-cluster/.terraform.lock.hcl
