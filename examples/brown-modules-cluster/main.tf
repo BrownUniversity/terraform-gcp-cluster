@@ -28,7 +28,7 @@ module "project" {
 }
 
 module "vpc" {
-  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.1"
+  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.2"
   project_id    = module.project.project_id
   network_name  = local.network_name
   subnet_name   = local.subnet_name
