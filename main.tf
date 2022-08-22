@@ -27,12 +27,8 @@ module "gke" {
   horizontal_pod_autoscaling        = var.horizontal_pod_autoscaling
   network_policy                    = var.network_policy
   enable_private_nodes              = var.enable_private_nodes
-  # enable_pod_security_policy        = var.enable_pod_security_policy
-  # master_authorized_networks        = var.master_authorized_networks
   master_ipv4_cidr_block            = var.master_ipv4_cidr_block
-  # disable_legacy_metadata_endpoints = true
   remove_default_node_pool          = var.remove_default_node_pool
-  # cluster_resource_labels           = var.cluster_resource_labels
 
   node_pools = [
     {

@@ -120,18 +120,6 @@ variable "enable_private_nodes" {
   default     = true
 }
 
-variable "enable_pod_security_policy" {
-  type        = bool
-  description = "(Beta) Configuration for the PodSecurityPolicy feature"
-  default     = true
-}
-
-variable "master_authorized_networks" {
-  type        = list(object({ cidr_block = string, display_name = string }))
-  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
-  default     = [{ cidr_block = "172.16.0.0/28", display_name = "internal" }]
-}
-
 variable "master_ipv4_cidr_block" {
   type        = string
   description = "(Beta) The IP range in CIDR notation to use for the hosted master network"
@@ -142,12 +130,6 @@ variable "remove_default_node_pool" {
   type        = bool
   description = "Remove default node pool while setting up the cluster"
   default     = false
-}
-
-variable "cluster_resource_labels" {
-  type        = map(string)
-  description = "The GCE resource labels (a map of key/value pairs) to be applied to the cluster"
-  default     = { "env" = "production" }
 }
 
 # ----------------------------------------
