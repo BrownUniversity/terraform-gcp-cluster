@@ -69,15 +69,14 @@ No resources.
 | <a name="input_core_pool_max_count"></a> [core\_pool\_max\_count](#input\_core\_pool\_max\_count) | Maximum number of nodes in the core-component pool | `number` | `3` | no |
 | <a name="input_core_pool_min_count"></a> [core\_pool\_min\_count](#input\_core\_pool\_min\_count) | Minimum number of nodes in the core-component pool | `number` | `1` | no |
 | <a name="input_core_pool_name"></a> [core\_pool\_name](#input\_core\_pool\_name) | Name for the core-component pool | `string` | `"core-pool"` | no |
-| <a name="input_core_pool_oauth_scope"></a> [core\_pool\_oauth\_scope](#input\_core\_pool\_oauth\_scope) | OAuth scope for core-component pool | `string` | `"https://www.googleapis.com/auth/cloud-platform"` | no |
 | <a name="input_core_pool_preemptible"></a> [core\_pool\_preemptible](#input\_core\_pool\_preemptible) | Make core-component pool preemptible | `bool` | `false` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Defines if service account specified to run nodes should be created. | `bool` | `false` | no |
 | <a name="input_enable_private_nodes"></a> [enable\_private\_nodes](#input\_enable\_private\_nodes) | (Beta) Whether nodes have internal IP addresses only | `bool` | `true` | no |
-| <a name="input_gke_version"></a> [gke\_version](#input\_gke\_version) | Major version of GKE | `string` | `"~> 6.0"` | no |
 | <a name="input_horizontal_pod_autoscaling"></a> [horizontal\_pod\_autoscaling](#input\_horizontal\_pod\_autoscaling) | Enable horizontal pod autoscaling addon | `bool` | `true` | no |
 | <a name="input_http_load_balancing"></a> [http\_load\_balancing](#input\_http\_load\_balancing) | Enable http load balancer add-on | `bool` | `false` | no |
 | <a name="input_ip_range_pods"></a> [ip\_range\_pods](#input\_ip\_range\_pods) | The range name for pods | `string` | `"kubernetes-pods"` | no |
 | <a name="input_ip_range_services"></a> [ip\_range\_services](#input\_ip\_range\_services) | The range name for services | `string` | `"kubernetes-services"` | no |
+| <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The Kubernetes version of the masters. If set to 'latest' it will pull latest available version in the selected region. | `string` | `"latest"` | no |
 | <a name="input_logging_service"></a> [logging\_service](#input\_logging\_service) | The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none | `string` | `"logging.googleapis.com/kubernetes"` | no |
 | <a name="input_maintenance_start_time"></a> [maintenance\_start\_time](#input\_maintenance\_start\_time) | Time window specified for daily maintenance operations in RFC3339 format | `string` | `"03:00"` | no |
 | <a name="input_master_ipv4_cidr_block"></a> [master\_ipv4\_cidr\_block](#input\_master\_ipv4\_cidr\_block) | (Beta) The IP range in CIDR notation to use for the hosted master network | `string` | `"172.16.0.0/28"` | no |
@@ -103,7 +102,6 @@ No resources.
 | <a name="input_user_pool_max_count"></a> [user\_pool\_max\_count](#input\_user\_pool\_max\_count) | Maximum number of nodes in the user pool | `number` | `20` | no |
 | <a name="input_user_pool_min_count"></a> [user\_pool\_min\_count](#input\_user\_pool\_min\_count) | Minimum number of nodes in the user pool | `number` | `1` | no |
 | <a name="input_user_pool_name"></a> [user\_pool\_name](#input\_user\_pool\_name) | Name for the user pool | `string` | `"user-pool"` | no |
-| <a name="input_user_pool_oauth_scope"></a> [user\_pool\_oauth\_scope](#input\_user\_pool\_oauth\_scope) | OAuth scope for user pool | `string` | `"https://www.googleapis.com/auth/cloud-platform"` | no |
 | <a name="input_user_pool_preemptible"></a> [user\_pool\_preemptible](#input\_user\_pool\_preemptible) | Make user pool preemptible | `bool` | `false` | no |
 
 ## Outputs

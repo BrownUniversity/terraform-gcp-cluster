@@ -8,10 +8,10 @@ variable "project_id" {
   description = "The project ID to host the cluster in"
 }
 
-variable "gke_version" {
+variable "kubernetes_version" {
   type        = string
-  description = "Major version of GKE"
-  default     = "~> 6.0"
+  description = "The Kubernetes version of the masters. If set to 'latest' it will pull latest available version in the selected region."
+  default     = "latest"
 }
 
 variable "cluster_name" {
@@ -209,13 +209,6 @@ variable "core_pool_initial_node_count" {
   default     = 1
 }
 
-variable "core_pool_oauth_scope" {
-  type        = string
-  description = "OAuth scope for core-component pool"
-  default     = "https://www.googleapis.com/auth/cloud-platform"
-}
-
-
 # ----------------------------------------
 #  USER POOL VALUES
 # ----------------------------------------
@@ -290,11 +283,5 @@ variable "user_pool_initial_node_count" {
   type        = number
   description = "Number of initial nodes in user pool"
   default     = 1
-}
-
-variable "user_pool_oauth_scope" {
-  type        = string
-  description = "OAuth scope for user pool"
-  default     = "https://www.googleapis.com/auth/cloud-platform"
 }
 
