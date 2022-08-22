@@ -152,7 +152,7 @@ asdf install
 #### Pre-commit hooks
 You should make sure that pre-commit hooks are installed to run the formater, linter, etc. Install and configure terraform [pre-commit hooks](https://github.com/antonbabenko/pre-commit-terraform) as follows:
 
-Install rependencies
+Install dependencies
 
 ```
 brew bundle install
