@@ -1,6 +1,7 @@
 name: brown-modules-cluster
 depends:
 - name: inspec-gcp
-  url: https://github.com/inspec/inspec-gcp/archive/master.tar.gz
+  git: https://github.com/inspec/inspec-gcp.git
+  tag: v1.10.37
 supports:
 - platform: gcp

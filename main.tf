@@ -6,8 +6,8 @@
 # Create the GKE Cluster
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                    = "18.0.0"
-  kubernetes_version         = "1.22.8-gke.202"
+  version                    = "22.1.0"
+  kubernetes_version         = var.kubernetes_version
   project_id                 = var.project_id
   name                       = var.cluster_name
   regional                   = var.regional
@@ -44,6 +44,7 @@ module "gke" {
       auto_upgrade       = var.core_pool_auto_upgrade
       preemptible        = var.core_pool_preemptible
       initial_node_count = var.core_pool_initial_node_count
+
     },
     {
       name               = var.user_pool_name
