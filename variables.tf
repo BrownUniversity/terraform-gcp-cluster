@@ -14,6 +14,12 @@ variable "kubernetes_version" {
   default     = "latest"
 }
 
+variable "release_channel" {
+  type        = string
+  description = "The release channel of this cluster. Accepted values are `UNSPECIFIED`, `RAPID`, `REGULAR` and `STABLE`. Defaults to `REGULAR`."
+  default     = "REGULAR"
+}
+
 variable "cluster_name" {
   type        = string
   description = "Name of cluster"
