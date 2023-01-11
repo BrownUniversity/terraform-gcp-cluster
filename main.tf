@@ -7,6 +7,7 @@
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
   version                    = "22.1.0"
+  release_channel            = var.release_channel
   kubernetes_version         = var.kubernetes_version
   project_id                 = var.project_id
   name                       = var.cluster_name
@@ -29,6 +30,7 @@ module "gke" {
   enable_private_nodes       = var.enable_private_nodes
   master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   remove_default_node_pool   = var.remove_default_node_pool
+  gce_pd_csi_driver          = var.gce_pd_csi_driver
 
   node_pools = [
     {

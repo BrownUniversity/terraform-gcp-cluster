@@ -14,6 +14,12 @@ variable "kubernetes_version" {
   default     = "latest"
 }
 
+variable "release_channel" {
+  type        = string
+  description = "The release channel of this cluster. Accepted values are `UNSPECIFIED`, `RAPID`, `REGULAR` and `STABLE`. Defaults to `REGULAR`."
+  default     = "REGULAR"
+}
+
 variable "cluster_name" {
   type        = string
   description = "Name of cluster"
@@ -130,6 +136,15 @@ variable "remove_default_node_pool" {
   type        = bool
   description = "Remove default node pool while setting up the cluster"
   default     = false
+}
+
+# Enabling this makes standard_rwo storage class available, which resolves stadand volumes from not binding
+# standard_rwo volumeBindingMode: Immediate to standard_rwo -> volumeBindingMode: WaitForFirstConsumer
+# See more https://stackoverflow.com/questions/72553227/gke-can-t-scale-up-nodes-due-of-persistentvolume
+variable "gce_pd_csi_driver" {
+  type        = bool
+  description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
+  default     = true
 }
 
 # ----------------------------------------
