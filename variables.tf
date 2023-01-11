@@ -132,6 +132,15 @@ variable "remove_default_node_pool" {
   default     = false
 }
 
+# Enabling this makes standard_rwo storage class available, which resolves stadand volumes from not binding
+# standard_rwo volumeBindingMode: Immediate to standard_rwo -> volumeBindingMode: WaitForFirstConsumer
+# See more https://stackoverflow.com/questions/72553227/gke-can-t-scale-up-nodes-due-of-persistentvolume
+variable "gce_pd_csi_driver" {
+  type        = bool
+  description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
+  default     = true
+}
+
 # ----------------------------------------
 #  NODE POOL VALUES
 # ----------------------------------------

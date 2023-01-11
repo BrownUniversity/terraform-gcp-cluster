@@ -29,6 +29,7 @@ module "gke" {
   enable_private_nodes       = var.enable_private_nodes
   master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   remove_default_node_pool   = var.remove_default_node_pool
+  gce_pd_csi_driver          = var.gce_pd_csi_driver
 
   node_pools = [
     {
