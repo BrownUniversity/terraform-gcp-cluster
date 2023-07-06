@@ -38,6 +38,7 @@ variable "region" {
 }
 
 variable "node_zones" {
+  type        = list(string)
   description = "The zones to host the cluster in (optional if regional cluster / required if zonal)"
   default     = ["us-east1-b"]
 }
@@ -144,6 +145,12 @@ variable "remove_default_node_pool" {
 variable "gce_pd_csi_driver" {
   type        = bool
   description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
+  default     = true
+}
+
+variable "pod_security_policy" {
+  type        = bool
+  description = "Enable pod security policy"
   default     = true
 }
 
@@ -299,4 +306,3 @@ variable "user_pool_initial_node_count" {
   description = "Number of initial nodes in user pool"
   default     = 1
 }
-

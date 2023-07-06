@@ -1,7 +1,14 @@
-variable "org_id" {}
-variable "billing_account" {}
-variable "folder_id" {}
+variable "org_id" {
+  type = string
+}
+variable "billing_account" {
+  type = string
+}
+variable "folder_id" {
+  type = string
+}
 variable "activate_apis" {
+  type        = list(string)
   description = "The list of apis to activate within the project"
   default = [
     "compute.googleapis.com",
