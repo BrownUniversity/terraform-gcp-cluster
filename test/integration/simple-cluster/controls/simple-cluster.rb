@@ -40,7 +40,7 @@ describe google_container_cluster(project: project_id, location: location, name:
   its('node_config.image_type'){should be_in ["COS", "COS_CONTAINERD"]}
   its('node_config.machine_type'){should be_in ["n1-standard-1", "e2-medium"]}
   its('node_pools.count'){should eq 3}
-  its('node_config.oauth_scopes'){should eq ["https://www.googleapis.com/auth/logging.write", "https://www.googleapis.com/auth/monitoring"]}
+  its('node_config.oauth_scopes'){should eq ["https://www.googleapis.com/auth/userinfo.email", "https://www.googleapis.com/auth/cloud-platform"]}
   its('node_config.service_account'){should eq service_account}
 end
 

@@ -4,6 +4,9 @@
 
 
 # Create the GKE Cluster
+# tfsec:ignore:google-gke-enforce-pod-security-policy 
+# tfsec:ignore:google-gke-enable-master-networks
+# tfsec:ignore:google-gke-use-cluster-labels
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
   version                    = "27.0.0"

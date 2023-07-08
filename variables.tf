@@ -97,12 +97,6 @@ variable "service_account_email" {
 }
 
 
-variable "skip_provisioners" {
-  type        = bool
-  description = "Flag to skip local-exec provisioners"
-  default     = false
-}
-
 variable "http_load_balancing" {
   type        = bool
   description = "Enable http load balancer add-on"
