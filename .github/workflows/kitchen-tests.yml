@@ -85,7 +85,7 @@ jobs:
     container:
       image: "${{ needs.docker.outputs.full_image_id }}"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Create Credential File
         run: |
           echo "$GCP_CREDENTIAL_JSON" | base64 -d > /tmp/credentials.json
@@ -109,7 +109,7 @@ jobs:
     container:
       image: "${{ needs.docker.outputs.full_image_id }}"
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Create Credential File
         run: |
           echo "$GCP_CREDENTIAL_JSON" | base64 -d > /tmp/credentials.json
