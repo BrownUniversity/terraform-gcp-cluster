@@ -31,7 +31,6 @@ module "gke" {
   master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   remove_default_node_pool   = var.remove_default_node_pool
   gce_pd_csi_driver          = var.gce_pd_csi_driver
-  enable_pod_security_policy = var.pod_security_policy
 
   node_pools = [
     {

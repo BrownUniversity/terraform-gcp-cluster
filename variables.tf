@@ -148,11 +148,6 @@ variable "gce_pd_csi_driver" {
   default     = true
 }
 
-variable "pod_security_policy" {
-  type        = bool
-  description = "Enable pod security policy"
-  default     = true
-}
 
 # ----------------------------------------
 #  NODE POOL VALUES
