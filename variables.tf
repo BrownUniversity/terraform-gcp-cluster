@@ -38,6 +38,7 @@ variable "region" {
 }
 
 variable "node_zones" {
+  type        = list(string)
   description = "The zones to host the cluster in (optional if regional cluster / required if zonal)"
   default     = ["us-east1-b"]
 }
@@ -96,12 +97,6 @@ variable "service_account_email" {
 }
 
 
-variable "skip_provisioners" {
-  type        = bool
-  description = "Flag to skip local-exec provisioners"
-  default     = false
-}
-
 variable "http_load_balancing" {
   type        = bool
   description = "Enable http load balancer add-on"
@@ -146,6 +141,7 @@ variable "gce_pd_csi_driver" {
   description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
   default     = true
 }
+
 
 # ----------------------------------------
 #  NODE POOL VALUES
@@ -299,4 +295,3 @@ variable "user_pool_initial_node_count" {
   description = "Number of initial nodes in user pool"
   default     = 1
 }
-

@@ -3,15 +3,13 @@
 # These resources are directly tested.
 # ----------------------------------------------------------------------------
 locals {
-  gcp_region     = "us-east1"
-  gcp_zone       = "us-east1-b"
-  project_name   = "inspec-cluster-brown"
-  network_prefix = "cft-gke-test"
-  regional       = false
-  network_name   = "network-01"
-  subnet_name    = "subnet-01"
-  subnet_region  = "us-east1"
-  routing_mode   = "REGIONAL"
+  gcp_region   = "us-east1"
+  gcp_zone     = "us-east1-b"
+  project_name = "inspec-cluster-brown"
+  regional     = false
+  network_name = "network-01"
+  subnet_name  = "subnet-01"
+  routing_mode = "REGIONAL"
 }
 
 # ------------------------------------------------------------
@@ -19,7 +17,7 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.4"
+  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.5"
   project_name    = local.project_name
   org_id          = var.org_id
   billing_account = var.billing_account
@@ -28,7 +26,7 @@ module "project" {
 }
 
 module "vpc" {
-  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.2"
+  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.3"
   project_id    = module.project.project_id
   network_name  = local.network_name
   subnet_name   = local.subnet_name
