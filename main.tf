@@ -4,12 +4,9 @@
 
 
 # Create the GKE Cluster
-# tfsec:ignore:google-gke-enforce-pod-security-policy 
-# tfsec:ignore:google-gke-enable-master-networks
-# tfsec:ignore:google-gke-use-cluster-labels
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                    = "27.0.0"
+  version                    = "31.0.0"
   release_channel            = var.release_channel
   kubernetes_version         = var.kubernetes_version
   project_id                 = var.project_id
@@ -29,10 +26,9 @@ module "gke" {
   http_load_balancing        = var.http_load_balancing
   horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
   network_policy             = var.network_policy
-  enable_private_nodes       = var.enable_private_nodes
-  master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   remove_default_node_pool   = var.remove_default_node_pool
   gce_pd_csi_driver          = var.gce_pd_csi_driver
+  deletion_protection        = var.deletion_protection
 
   node_pools = [
     {

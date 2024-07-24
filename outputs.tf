@@ -8,11 +8,12 @@ output "region" {
 
 output "cluster_name" {
   description = "Cluster name"
-  value       = var.cluster_name
+  value       = module.gke.name
 }
 
 output "location" {
-  value = module.gke.location
+  description = "The location (region or zone) in which the cluster master will be created"
+  value       = module.gke.location
 }
 
 output "zones" {
@@ -25,3 +26,17 @@ output "service_account" {
   value       = module.gke.service_account
 }
 
+output "node_pools_names" {
+  description = "List of node pools names"
+  value       = module.gke.node_pools_names
+}
+
+output "http_load_balancing_enabled" {
+  description = "Whether the cluster enables HTTP load balancing"
+  value       = module.gke.http_load_balancing_enabled
+}
+
+output "horizontal_pod_autoscaling_enabled" {
+  description = "Whether the cluster enables horizontal pod autoscaling"
+  value       = module.gke.horizontal_pod_autoscaling_enabled
+}
