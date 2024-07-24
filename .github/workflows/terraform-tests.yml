@@ -32,7 +32,7 @@ jobs:
         run: |
           terraform init
           terraform test -filter=tests/test_simple_cluster.tftest.hcl
-          terraform test -filter=tests/test_brown_modules.tftest.hcl
+          terraform test -filter=tests/test_brown_modules_cluster.tftest.hcl
         env:
           TF_VAR_billing_account: ${{ secrets.GCP_BURWOOD_BILLING_ACCOUNT }}
           TF_VAR_org_id: ${{ secrets.GCP_ORG_ID }}
