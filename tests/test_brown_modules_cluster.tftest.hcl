@@ -1,4 +1,4 @@
-run "create_gke_cluster" {
+run "create_brown_modules_cluster" {
 
   module {
     source = "./tests/brown-modules-cluster"
