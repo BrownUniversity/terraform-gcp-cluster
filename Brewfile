@@ -1,6 +1,6 @@
 brew "pre-commit"
 brew "terraform-docs"
 brew "tflint"
-brew "trivy"
+brew "tfsec"
 
 cask "google-cloud-sdk"

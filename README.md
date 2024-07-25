@@ -1,6 +1,6 @@
 # Core/User Cluster
 
-![kitchen-tests](https://github.com/BrownUniversity/terraform-gcp-cluster/workflows/kitchen-tests/badge.svg)
+![terraform-tests](https://github.com/BrownUniversity/terraform-gcp-cluster/workflows/terraform-tests/badge.svg)
 
 
 This folder contains a [Terraform](https://www.terraform.io/) module to deploy a 
@@ -28,7 +28,7 @@ GOOGLE_APPLICATION_CREDENTIALS=/path/to/file.json
 ## How to use this module
 
 This repository defines a [Terraform module](https://www.terraform.io/docs/modules/usage.html), which you can use in your
-code by adding a `module` configuration and setting its `source` parameter to URL of this repository. See the [examples](/examples) folder for guidance
+code by adding a `module` configuration and setting its `source` parameter to URL of this repository. See the [tests](/tests) folder for guidance
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
@@ -128,22 +128,19 @@ Use [GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html#production-
 
 ### Version managers
 
-We recommend using [asdf](https://asdf-vm.com) to manage your versions of Terrafom and Ruby.
+We recommend using [asdf](https://asdf-vm.com) to manage your versions of Terrafom.
 
 ```
 brew install asdf
 ```
 
-Alternatively you can use [tfenv](https://github.com/tfutils/tfenv) and [rbenv](https://github.com/rbenv/rbenv)
+### Terraform
 
-### Terraform and Ruby
-
-The tests can simply run in CI. If you want to run the tests locally, you will need to install the version of terraform and Ruby specified in the `.tool-versions` file (or `.terraform-version`, `.ruby-version`). 
+You can also install the latest version of terraform version via brew.
 
 ```
-asdf plugin-add terraform https://github.com/asdf-community/asdf-hashicorp.git
-asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-asdf install
+brew tap hashicorp/tap
+brew install hashicorp/tap/terraform
 ```
 
 #### Pre-commit hooks
@@ -188,34 +185,14 @@ to set and uset the `GOOGLE_APPLICATION_CREDENTIALS` variable.
 
 ### Testing
 
-This repository uses Kitchen-Terraform to test the terraform modules. In the [examples](/examples) directory you can find examples of how each module can be used. Those examples are fed to [Test Kitchen](https://kitchen.ci/). To install test kitchen, first make sure you have Ruby and bundler installed.
-
-```
-gem install bundler
-```
-
-Then install the prerequisites for test kitchen.
-
-```
-bundle install
-```
-
-You'll need to add some common credentials and secret variables
-
-And now you're ready to run test kitchen. Test kitchen has a couple main commands:
-
-- `bundle exec kitchen create` initializes terraform.
-- `bundle exec kitchen converge` runs our terraform examples.
-- `bundle exec kitchen verify` runs our inspec scripts against a converged kitchen.
-- `bundle exec kitchen destroy` destroys infrastructure.
-- `bundle exec kitchen test` does all the above.
+The tests can be run locally with `terraform test` after running `terraform init`. You will need to supply `org_id`, `folder_id`, and `billing_account` variables through `terraform.tfvars` file. Please see `terraform.tfvars.example` file for an example.
 
 
 ### CI
 This project has three workflows enabled:
 
-1. PR labeler: When openning a PR to defaukt branch, a label is given assigned automatically accourding to the name of your feature branch. The labeler follows the follows rules in [pr-labeler.yml](.github/pr-labeler.yml)
+1. PR labeler: When opening a PR to default branch, a label is given assigned automatically according to the name of your feature branch. The labeler follows the follows rules in [pr-labeler.yml](.github/pr-labeler.yml)
 
-2. Realease Drafter: When merging to main, a release is drafted using the [Release-Drafter Action](https://github.com/marketplace/actions/release-drafter)
+2. Release Drafter: When merging to master, a release is drafted using the [Release-Drafter Action](https://github.com/marketplace/actions/release-drafter)
 
-3. `Kitchen test` runs on PR, merge to main and releases.
+3. `terraform test` runs on PR, merge to main and releases.

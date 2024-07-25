@@ -11,7 +11,7 @@ on:
       - "main"
 
 jobs:
-  terraform_tests:
+  terraform-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
