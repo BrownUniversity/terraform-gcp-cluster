@@ -28,9 +28,17 @@ output "cluster_name" {
   value       = module.simple_cluster.cluster_name
 }
 
+output "node_pools_names" {
+  description = "List of node pools names"
+  value       = module.simple_cluster.node_pools_names
+}
 
+output "http_load_balancing_enabled" {
+  description = "Whether the cluster enables HTTP load balancing"
+  value       = module.simple_cluster.http_load_balancing_enabled
+}
 
-
-
-
-
+output "horizontal_pod_autoscaling_enabled" {
+  description = "Whether the cluster enables horizontal pod autoscaling"
+  value       = module.simple_cluster.horizontal_pod_autoscaling_enabled
+}
