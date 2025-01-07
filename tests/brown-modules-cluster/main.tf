@@ -17,7 +17,7 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.6"
+  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.7"
   project_name    = local.project_name
   org_id          = var.org_id
   billing_account = var.billing_account
@@ -26,7 +26,7 @@ module "project" {
 }
 
 module "vpc" {
-  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.4"
+  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.5"
   project_id    = module.project.project_id
   network_name  = local.network_name
   subnet_name   = local.subnet_name

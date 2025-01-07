@@ -35,9 +35,9 @@ code by adding a `module` configuration and setting its `source` parameter to UR
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.2 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | 5.38.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | 5.38.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 6.15.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | 6.15.0 |
 
 ## Providers
 
@@ -47,7 +47,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 31.0.0 |
+| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 35.0.1 |
 
 ## Resources
 
@@ -85,7 +85,7 @@ No resources.
 | <a name="input_monitoring_service"></a> [monitoring\_service](#input\_monitoring\_service) | The monitoring service that the cluster should write metrics to. Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API. VM metrics will be collected by Google Compute Engine regardless of this setting Available options include monitoring.googleapis.com, monitoring.googleapis.com/kubernetes (beta) and none | `string` | `"monitoring.googleapis.com/kubernetes"` | no |
 | <a name="input_network"></a> [network](#input\_network) | The VPC network to host the cluster in. | `string` | `"kubernetes-vpc"` | no |
 | <a name="input_network_policy"></a> [network\_policy](#input\_network\_policy) | Enable network policy addon | `bool` | `true` | no |
-| <a name="input_node_zones"></a> [node\_zones](#input\_node\_zones) | The zones to host the cluster in (optional if regional cluster / required if zonal) | `list(string)` | <pre>[<br>  "us-east1-b"<br>]</pre> | no |
+| <a name="input_node_zones"></a> [node\_zones](#input\_node\_zones) | The zones to host the cluster in (optional if regional cluster / required if zonal) | `list(string)` | <pre>[<br/>  "us-east1-b"<br/>]</pre> | no |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | The project ID to host the cluster in | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The region to host the cluster in | `string` | n/a | yes |
 | <a name="input_regional"></a> [regional](#input\_regional) | Whether the master node should be regional or zonal | `bool` | `true` | no |
