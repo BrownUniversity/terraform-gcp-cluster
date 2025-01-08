@@ -35,7 +35,6 @@ module "gke" {
   remove_default_node_pool   = var.remove_default_node_pool
   gce_pd_csi_driver          = var.gce_pd_csi_driver
   deletion_protection        = var.deletion_protection
-  skip_provisioners          = var.skip_provisioners
 
   node_pools = [
     {

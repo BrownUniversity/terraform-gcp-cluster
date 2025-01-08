@@ -91,7 +91,6 @@ No resources.
 | <a name="input_release_channel"></a> [release\_channel](#input\_release\_channel) | The release channel of this cluster. Accepted values are `UNSPECIFIED`, `RAPID`, `REGULAR` and `STABLE`. Defaults to `REGULAR`. | `string` | `"REGULAR"` | no |
 | <a name="input_remove_default_node_pool"></a> [remove\_default\_node\_pool](#input\_remove\_default\_node\_pool) | Remove default node pool while setting up the cluster | `bool` | `false` | no |
 | <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | Email of service account | `string` | n/a | yes |
-| <a name="input_skip_provisioners"></a> [skip\_provisioners](#input\_skip\_provisioners) | Flag to skip local-exec provisioners | `bool` | `false` | no |
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | The subnetwork to host the cluster in | `string` | `"kubernetes-subnet"` | no |
 | <a name="input_user_pool_auto_repair"></a> [user\_pool\_auto\_repair](#input\_user\_pool\_auto\_repair) | Enable auto-repair of user pool | `bool` | `true` | no |
 | <a name="input_user_pool_auto_upgrade"></a> [user\_pool\_auto\_upgrade](#input\_user\_pool\_auto\_upgrade) | Enable auto-upgrade of user pool | `bool` | `true` | no |
