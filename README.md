@@ -47,7 +47,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 35.0.1 |
+| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 34.0.0 |
 
 ## Resources
 
@@ -71,7 +71,6 @@ No resources.
 | <a name="input_core_pool_name"></a> [core\_pool\_name](#input\_core\_pool\_name) | Name for the core-component pool | `string` | `"core-pool"` | no |
 | <a name="input_core_pool_preemptible"></a> [core\_pool\_preemptible](#input\_core\_pool\_preemptible) | Make core-component pool preemptible | `bool` | `false` | no |
 | <a name="input_create_service_account"></a> [create\_service\_account](#input\_create\_service\_account) | Defines if service account specified to run nodes should be created. | `bool` | `false` | no |
-| <a name="input_deletion_protection"></a> [deletion\_protection](#input\_deletion\_protection) | Enable deletion protection for the cluster | `bool` | `false` | no |
 | <a name="input_enable_private_nodes"></a> [enable\_private\_nodes](#input\_enable\_private\_nodes) | (Beta) Whether nodes have internal IP addresses only | `bool` | `true` | no |
 | <a name="input_gce_pd_csi_driver"></a> [gce\_pd\_csi\_driver](#input\_gce\_pd\_csi\_driver) | (Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver. | `bool` | `true` | no |
 | <a name="input_horizontal_pod_autoscaling"></a> [horizontal\_pod\_autoscaling](#input\_horizontal\_pod\_autoscaling) | Enable horizontal pod autoscaling addon | `bool` | `true` | no |
@@ -81,6 +80,7 @@ No resources.
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The Kubernetes version of the masters. If set to 'latest' it will pull latest available version in the selected region. | `string` | `"latest"` | no |
 | <a name="input_logging_service"></a> [logging\_service](#input\_logging\_service) | The logging service that the cluster should write logs to. Available options include logging.googleapis.com, logging.googleapis.com/kubernetes (beta), and none | `string` | `"logging.googleapis.com/kubernetes"` | no |
 | <a name="input_maintenance_start_time"></a> [maintenance\_start\_time](#input\_maintenance\_start\_time) | Time window specified for daily maintenance operations in RFC3339 format | `string` | `"03:00"` | no |
+| <a name="input_master_ipv4_cidr_block"></a> [master\_ipv4\_cidr\_block](#input\_master\_ipv4\_cidr\_block) | (Beta) The IP range in CIDR notation to use for the hosted master network | `string` | `"172.16.0.0/28"` | no |
 | <a name="input_monitoring_service"></a> [monitoring\_service](#input\_monitoring\_service) | The monitoring service that the cluster should write metrics to. Automatically send metrics from pods in the cluster to the Google Cloud Monitoring API. VM metrics will be collected by Google Compute Engine regardless of this setting Available options include monitoring.googleapis.com, monitoring.googleapis.com/kubernetes (beta) and none | `string` | `"monitoring.googleapis.com/kubernetes"` | no |
 | <a name="input_network"></a> [network](#input\_network) | The VPC network to host the cluster in. | `string` | `"kubernetes-vpc"` | no |
 | <a name="input_network_policy"></a> [network\_policy](#input\_network\_policy) | Enable network policy addon | `bool` | `true` | no |
@@ -91,6 +91,7 @@ No resources.
 | <a name="input_release_channel"></a> [release\_channel](#input\_release\_channel) | The release channel of this cluster. Accepted values are `UNSPECIFIED`, `RAPID`, `REGULAR` and `STABLE`. Defaults to `REGULAR`. | `string` | `"REGULAR"` | no |
 | <a name="input_remove_default_node_pool"></a> [remove\_default\_node\_pool](#input\_remove\_default\_node\_pool) | Remove default node pool while setting up the cluster | `bool` | `false` | no |
 | <a name="input_service_account_email"></a> [service\_account\_email](#input\_service\_account\_email) | Email of service account | `string` | n/a | yes |
+| <a name="input_skip_provisioners"></a> [skip\_provisioners](#input\_skip\_provisioners) | Flag to skip local-exec provisioners | `bool` | `false` | no |
 | <a name="input_subnetwork"></a> [subnetwork](#input\_subnetwork) | The subnetwork to host the cluster in | `string` | `"kubernetes-subnet"` | no |
 | <a name="input_user_pool_auto_repair"></a> [user\_pool\_auto\_repair](#input\_user\_pool\_auto\_repair) | Enable auto-repair of user pool | `bool` | `true` | no |
 | <a name="input_user_pool_auto_upgrade"></a> [user\_pool\_auto\_upgrade](#input\_user\_pool\_auto\_upgrade) | Enable auto-upgrade of user pool | `bool` | `true` | no |

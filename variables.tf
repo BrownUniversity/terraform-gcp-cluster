@@ -97,6 +97,12 @@ variable "service_account_email" {
 }
 
 
+variable "skip_provisioners" {
+  type        = bool
+  description = "Flag to skip local-exec provisioners"
+  default     = false
+}
+
 variable "http_load_balancing" {
   type        = bool
   description = "Enable http load balancer add-on"
@@ -121,15 +127,15 @@ variable "enable_private_nodes" {
   default     = true
 }
 
+variable "master_ipv4_cidr_block" {
+  type        = string
+  description = "(Beta) The IP range in CIDR notation to use for the hosted master network"
+  default     = "172.16.0.0/28"
+}
+
 variable "remove_default_node_pool" {
   type        = bool
   description = "Remove default node pool while setting up the cluster"
-  default     = false
-}
-
-variable "deletion_protection" {
-  type        = bool
-  description = "Enable deletion protection for the cluster"
   default     = false
 }
 
@@ -141,7 +147,6 @@ variable "gce_pd_csi_driver" {
   description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
   default     = true
 }
-
 
 # ----------------------------------------
 #  NODE POOL VALUES
@@ -295,3 +300,4 @@ variable "user_pool_initial_node_count" {
   description = "Number of initial nodes in user pool"
   default     = 1
 }
+

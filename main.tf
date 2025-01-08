@@ -10,7 +10,7 @@
 #tfsec:ignore:google-gke-use-cluster-labels
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                    = "35.0.1"
+  version                    = "34.0.0"
   release_channel            = var.release_channel
   kubernetes_version         = var.kubernetes_version
   project_id                 = var.project_id
@@ -31,9 +31,11 @@ module "gke" {
   horizontal_pod_autoscaling = var.horizontal_pod_autoscaling
   network_policy             = var.network_policy
   enable_private_nodes       = var.enable_private_nodes
+  master_ipv4_cidr_block     = var.master_ipv4_cidr_block
   remove_default_node_pool   = var.remove_default_node_pool
   gce_pd_csi_driver          = var.gce_pd_csi_driver
   deletion_protection        = var.deletion_protection
+  skip_provisioners          = var.skip_provisioners
 
   node_pools = [
     {
