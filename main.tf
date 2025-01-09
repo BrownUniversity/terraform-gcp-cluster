@@ -10,7 +10,7 @@
 #tfsec:ignore:google-gke-use-cluster-labels
 module "gke" {
   source                     = "terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster"
-  version                    = "35.0.1"
+  version                    = "34.0.0"
   release_channel            = var.release_channel
   kubernetes_version         = var.kubernetes_version
   project_id                 = var.project_id

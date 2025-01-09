@@ -96,7 +96,6 @@ variable "service_account_email" {
   description = "Email of service account"
 }
 
-
 variable "http_load_balancing" {
   type        = bool
   description = "Enable http load balancer add-on"
@@ -147,7 +146,6 @@ variable "gce_pd_csi_driver" {
   description = "(Beta) Whether this cluster should enable the Google Compute Engine Persistent Disk Container Storage Interface (CSI) Driver."
   default     = true
 }
-
 
 # ----------------------------------------
 #  NODE POOL VALUES
@@ -301,3 +299,4 @@ variable "user_pool_initial_node_count" {
   description = "Number of initial nodes in user pool"
   default     = 1
 }
+
