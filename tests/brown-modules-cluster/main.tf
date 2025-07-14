@@ -55,7 +55,7 @@ module "simple_cluster" {
   core_pool_min_count          = 1
   core_pool_max_count          = 3
   core_pool_local_ssd_count    = 0
-  core_pool_disk_size_gb       = 10
+  core_pool_disk_size_gb       = 50
   core_pool_auto_repair        = true
   core_pool_auto_upgrade       = true
   core_pool_preemptible        = false
@@ -65,7 +65,7 @@ module "simple_cluster" {
   user_pool_min_count          = 0
   user_pool_max_count          = 3
   user_pool_local_ssd_count    = 0
-  user_pool_disk_size_gb       = 10
+  user_pool_disk_size_gb       = 50
   user_pool_auto_repair        = true
   user_pool_auto_upgrade       = true
   user_pool_preemptible        = false
