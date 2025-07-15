@@ -22,8 +22,6 @@ jobs:
           GCP_CREDENTIAL_JSON: ${{ secrets.GCP_CI_CREDENTIAL_JSON}}
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.10.3
       - name: Run terraform test
         run: |
           terraform init

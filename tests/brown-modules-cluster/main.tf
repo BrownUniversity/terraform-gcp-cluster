@@ -17,7 +17,7 @@ locals {
 # ------------------------------------------------------------
 # Create the GCP Project
 module "project" {
-  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.7"
+  source          = "git::https://github.com/BrownUniversity/terraform-gcp-project.git?ref=v0.1.8"
   project_name    = local.project_name
   org_id          = var.org_id
   billing_account = var.billing_account
@@ -26,7 +26,7 @@ module "project" {
 }
 
 module "vpc" {
-  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.5"
+  source        = "git::https://github.com/BrownUniversity/terraform-gcp-vpc.git?ref=v0.1.6"
   project_id    = module.project.project_id
   network_name  = local.network_name
   subnet_name   = local.subnet_name
@@ -55,7 +55,7 @@ module "simple_cluster" {
   core_pool_min_count          = 1
   core_pool_max_count          = 3
   core_pool_local_ssd_count    = 0
-  core_pool_disk_size_gb       = 10
+  core_pool_disk_size_gb       = 50
   core_pool_auto_repair        = true
   core_pool_auto_upgrade       = true
   core_pool_preemptible        = false
@@ -65,7 +65,7 @@ module "simple_cluster" {
   user_pool_min_count          = 0
   user_pool_max_count          = 3
   user_pool_local_ssd_count    = 0
-  user_pool_disk_size_gb       = 10
+  user_pool_disk_size_gb       = 50
   user_pool_auto_repair        = true
   user_pool_auto_upgrade       = true
   user_pool_preemptible        = false
