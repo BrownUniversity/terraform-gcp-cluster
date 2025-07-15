@@ -35,9 +35,9 @@ code by adding a `module` configuration and setting its `source` parameter to UR
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.10.0 |
-| <a name="requirement_google"></a> [google](#requirement\_google) | 6.15.0 |
-| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | 6.15.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12.2 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 6.42.0 |
+| <a name="requirement_google-beta"></a> [google-beta](#requirement\_google-beta) | 6.42.0 |
 
 ## Providers
 
@@ -47,7 +47,7 @@ No providers.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 34.0.0 |
+| <a name="module_gke"></a> [gke](#module\_gke) | terraform-google-modules/kubernetes-engine/google//modules/beta-private-cluster | 37.0.0 |
 
 ## Resources
 
